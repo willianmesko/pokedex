@@ -1,0 +1,22 @@
+generator client {
+  provider   = "prisma-client-js"
+  output     = "../app/generated/prisma"
+
+}
+
+datasource db {
+  provider = "postgresql"
+
+}
+
+model Pokemon {
+  id        Int    @id
+  name      String
+  types     String
+  imagePath String
+
+  height      Int?
+  weight      Int?
+  stats       Json?
+  abilities   Json?
+}
