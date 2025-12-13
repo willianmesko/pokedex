@@ -6,37 +6,30 @@ A **Pokédex application** built with **Next.js**, **Prisma**, and **PostgreSQL*
 
 ## 🎥 Demo
 
-### Screenshots
-
 <p align="center">
-  <img src="./docs/screenshots/home.png" alt="Home Page" width="800">
-  <br>
-  <em>Home Page - Pokémon List with Filters</em>
-</p>
-
-<p align="center">
-  <img src="./docs/screenshots/details.png" alt="Pokémon Details" width="800">
-  <br>
-  <em>Pokémon Details Page</em>
-</p>
-
-<p align="center">
-  <img src="./docs/screenshots/search.png" alt="Search Functionality" width="800">
-  <br>
-  <em>Search and Filter Features</em>
-</p>
-
-### Videos
-
-<p align="center">
-  <a href="./docs/videos/demo.mp4">
-    <img src="./docs/screenshots/video-thumbnail.png" alt="Watch Demo Video" width="800">
+  <a href="./docs/videos/demo.mov">
+    <img src="./docs/screenshots/thumb.png" alt="Watch Demo Video" width="800">
   </a>
   <br>
   <em>Full Application Demo (Click to watch)</em>
 </p>
+<p align="center">
+  <img src="./docs/screenshots/thumb.png" alt="Home Page" width="800">
+  <br>
+  <em>Desktop Page - Pokémon List with Filters</em>
+</p>
 
-> 💡 **Note**: Add your screenshots to `./docs/screenshots/` and videos to `./docs/videos/` directories.
+<p align="center">
+  <img src="./docs/screenshots/mobile1.png" alt="Mobiletails" width="800">
+  <br>
+  <em>Pokémon Mobile Page</em>
+</p>
+
+<p align="center">
+  <img src="./docs/screenshots/mobile2.png" alt="Mobile " width="800">
+  <br>
+  <em>Pokémon Mobile Page</em>
+</p>
 
 ---
 
