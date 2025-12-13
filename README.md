@@ -1,3 +1,5 @@
+Entendi o problema! As imagens não estão sendo exibidas corretamente no preview do GitHub. Vou ajustar a seção de Demo para usar a sintaxe correta do markdown que funciona melhor no GitHub:
+
 ````markdown
 # 🧬 Pokédex – Full-Stack Application
 
@@ -7,26 +9,22 @@ A **Pokédex application** built with **Next.js**, **Prisma**, and **PostgreSQL*
 
 ## 🎥 Demo
 
-### Desktop View
+**Desktop View**
 
 ![Pokédex Desktop View](https://github.com/user-attachments/assets/97dcc1cc-2d9e-444a-a595-f3943d36c134)
 
-### List View
+**List View**
 
 ![Pokédex List View](https://github.com/user-attachments/assets/324e29a5-cd94-498f-8fc0-ef879b24e6af)
 
-### Detail Views
+**Detail View**
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/a0b1c075-c3ff-4923-9a6c-94419b73fe13" alt="Pokédex Detail View" width="400"/>
-</p>
+![Pokédex Detail View](https://github.com/user-attachments/assets/a0b1c075-c3ff-4923-9a6c-94419b73fe13)
 
-### Mobile Views
+**Mobile Views**
 
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/f9f4a257-aabc-402b-960b-e04383c228c1" alt="Pokédex Mobile View" width="250"/>
-  <img src="https://github.com/user-attachments/assets/918c931e-28cb-4f8d-9264-2ce6d1e18104" alt="Pokédex Mobile Detail" width="250"/>
-</p>
+![Pokédex Mobile View](https://github.com/user-attachments/assets/f9f4a257-aabc-402b-960b-e04383c228c1)
+![Pokédex Mobile Detail](https://github.com/user-attachments/assets/918c931e-28cb-4f8d-9264-2ce6d1e18104)
 
 ---
 
