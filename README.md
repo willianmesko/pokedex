@@ -6,30 +6,12 @@ A **Pokédex application** built with **Next.js**, **Prisma**, and **PostgreSQL*
 
 ## 🎥 Demo
 
-<p align="center">
-  <a href="./docs/videos/demo.mov">
-    <img src="./docs/screenshots/thumb.png" alt="Watch Demo Video" width="800">
-  </a>
-  <br>
-  <em>Full Application Demo (Click to watch)</em>
-</p>
-<p align="center">
-  <img src="./docs/screenshots/thumb.png" alt="Home Page" width="800">
-  <br>
-  <em>Desktop Page - Pokémon List with Filters</em>
-</p>
-
-<p align="center">
-  <img src="./docs/screenshots/mobile1.png" alt="Mobiletails" width="800">
-  <br>
-  <em>Pokémon Mobile Page</em>
-</p>
-
-<p align="center">
-  <img src="./docs/screenshots/mobile2.png" alt="Mobile " width="800">
-  <br>
-  <em>Pokémon Mobile Page</em>
-</p>
+<img width="325" height="704" alt="Image" src="https://github.com/user-attachments/assets/918c931e-28cb-4f8d-9264-2ce6d1e18104" />
+<img width="1622" height="805" alt="Image" src="https://github.com/user-attachments/assets/324e29a5-cd94-498f-8fc0-ef879b24e6af" />
+<img width="324" height="700" alt="Image" src="https://github.com/user-attachments/assets/f9f4a257-aabc-402b-960b-e04383c228c1" />
+<img width="325" height="704" alt="Image" src="https://github.com/user-attachments/assets/918c931e-28cb-4f8d-9264-2ce6d1e18104" />
+<img width="1728" height="952" alt="Image" src="https://github.com/user-attachments/assets/97dcc1cc-2d9e-444a-a595-f3943d36c134" />
+<img width="501" height="410" alt="Image" src="https://github.com/user-attachments/assets/a0b1c075-c3ff-4923-9a6c-94419b73fe13" />
 
 ---
 
