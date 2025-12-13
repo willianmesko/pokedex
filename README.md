@@ -1,3 +1,4 @@
+````markdown
 # 🧬 Pokédex – Full-Stack Application
 
 A **Pokédex application** built with **Next.js**, **Prisma**, and **PostgreSQL**. This project demonstrates a complete end-to-end architecture with local data persistence, server-side operations, and a responsive UI—all running with a single Docker command.
@@ -6,17 +7,17 @@ A **Pokédex application** built with **Next.js**, **Prisma**, and **PostgreSQL*
 
 ## 🎥 Demo
 
-<img width="1728" height="952" alt="Image" src="https://github.com/user-attachments/assets/97dcc1cc-2d9e-444a-a595-f3943d36c134" />
+<img width="1728" alt="Pokédex Desktop View" src="https://github.com/user-attachments/assets/97dcc1cc-2d9e-444a-a595-f3943d36c134" />
 
-<img width="1622" height="805" alt="Image" src="https://github.com/user-attachments/assets/324e29a5-cd94-498f-8fc0-ef879b24e6af" />
-<img width="501" height="410" alt="Image" src="https://github.com/user-attachments/assets/a0b1c075-c3ff-4923-9a6c-94419b73fe13" />
-<img width="324" height="700" alt="Image" src="https://github.com/user-attachments/assets/f9f4a257-aabc-402b-960b-e04383c228c1" />
-<img width="325" height="704" alt="Image" src="https://github.com/user-attachments/assets/918c931e-28cb-4f8d-9264-2ce6d1e18104" />
+<img width="1622" alt="Pokédex List View" src="https://github.com/user-attachments/assets/324e29a5-cd94-498f-8fc0-ef879b24e6af" />
+
+<img width="501" alt="Pokédex Detail View" src="https://github.com/user-attachments/assets/a0b1c075-c3ff-4923-9a6c-94419b73fe13" />
+
+<img width="324" alt="Pokédex Mobile View" src="https://github.com/user-attachments/assets/f9f4a257-aabc-402b-960b-e04383c228c1" />
+
+<img width="325" alt="Pokédex Mobile Detail" src="https://github.com/user-attachments/assets/918c931e-28cb-4f8d-9264-2ce6d1e18104" />
 
 ---
-
-````markdown
-# Project Name
 
 ## ✅ Requirements
 
@@ -93,11 +94,7 @@ Open your browser and navigate to:
 
 - Docker is used only for infrastructure (PostgreSQL) to keep the setup simple and reliable.
 
-```
-
-
-
-
+---
 
 ## 🧱 Architecture & Stack
 
@@ -211,40 +208,38 @@ Key principles:
 ## 📦 Project Structure
 
 ```
-
 .
-├── next/ # Next.js configuration
+├── next/                    # Next.js configuration
 ├── app/
-│ ├── api/pokedex/ # API routes
-│ │ └── route.ts # Pokédex API endpoint
-│ ├── generated/ # Generated types/files
-│ └── pokedex/ # Pokédex page
+│   ├── api/pokedex/        # API routes
+│   │   └── route.ts        # Pokédex API endpoint
+│   ├── generated/          # Generated types/files
+│   └── pokedex/            # Pokédex page
 ├── modules/
-│ ├── pokedex/
-│ │ ├── api/ # API layer
-│ │ ├── components/ # React components
-│ │ ├── data/ # Data access layer
-│ │ ├── dto/ # Data Transfer Objects
-│ │ ├── entities/ # Domain entities
-│ │ ├── hooks/ # React hooks
-│ │ ├── server/ # Server-side logic
-│ │ └── validation/ # Validation schemas
-│ │ └── constants.ts # Module constants
-│ └── shared/
-│ ├── components/ # Shared UI components
-│ ├── errors/ # Error handling
-│ ├── hooks/ # Shared hooks
-│ ├── lib/ # Utility libraries
-│ ├── providers/ # Context providers
-│ └── utils/ # Helper functions
+│   ├── pokedex/
+│   │   ├── api/            # API layer
+│   │   ├── components/     # React components
+│   │   ├── data/           # Data access layer
+│   │   ├── dto/            # Data Transfer Objects
+│   │   ├── entities/       # Domain entities
+│   │   ├── hooks/          # React hooks
+│   │   ├── server/         # Server-side logic
+│   │   ├── validation/     # Validation schemas
+│   │   └── constants.ts    # Module constants
+│   └── shared/
+│       ├── components/     # Shared UI components
+│       ├── errors/         # Error handling
+│       ├── hooks/          # Shared hooks
+│       ├── lib/            # Utility libraries
+│       ├── providers/      # Context providers
+│       └── utils/          # Helper functions
 ├── docs/
-│ ├── screenshots/ # Application screenshots
-│ └── videos/ # Demo videos
+│   ├── screenshots/        # Application screenshots
+│   └── videos/             # Demo videos
 ├── favicon.ico
-├── globals.css # Global styles
-├── layout.tsx # Root layout
-└── page.tsx # Home page
-
+├── globals.css             # Global styles
+├── layout.tsx              # Root layout
+└── page.tsx                # Home page
 ```
 
 ---
@@ -321,4 +316,7 @@ This project demonstrates how to build a clean, maintainable, and scalable appli
 ## 📝 License
 
 MIT
+
+```
+
 ```
