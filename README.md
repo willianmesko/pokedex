@@ -7,15 +7,26 @@ A **Pokédex application** built with **Next.js**, **Prisma**, and **PostgreSQL*
 
 ## 🎥 Demo
 
-<img width="1728" alt="Pokédex Desktop View" src="https://github.com/user-attachments/assets/97dcc1cc-2d9e-444a-a595-f3943d36c134" />
+### Desktop View
 
-<img width="1622" alt="Pokédex List View" src="https://github.com/user-attachments/assets/324e29a5-cd94-498f-8fc0-ef879b24e6af" />
+![Pokédex Desktop View](https://github.com/user-attachments/assets/97dcc1cc-2d9e-444a-a595-f3943d36c134)
 
-<img width="501" alt="Pokédex Detail View" src="https://github.com/user-attachments/assets/a0b1c075-c3ff-4923-9a6c-94419b73fe13" />
+### List View
 
-<img width="324" alt="Pokédex Mobile View" src="https://github.com/user-attachments/assets/f9f4a257-aabc-402b-960b-e04383c228c1" />
+![Pokédex List View](https://github.com/user-attachments/assets/324e29a5-cd94-498f-8fc0-ef879b24e6af)
 
-<img width="325" alt="Pokédex Mobile Detail" src="https://github.com/user-attachments/assets/918c931e-28cb-4f8d-9264-2ce6d1e18104" />
+### Detail Views
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/a0b1c075-c3ff-4923-9a6c-94419b73fe13" alt="Pokédex Detail View" width="400"/>
+</p>
+
+### Mobile Views
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/f9f4a257-aabc-402b-960b-e04383c228c1" alt="Pokédex Mobile View" width="250"/>
+  <img src="https://github.com/user-attachments/assets/918c931e-28cb-4f8d-9264-2ce6d1e18104" alt="Pokédex Mobile Detail" width="250"/>
+</p>
 
 ---
 
