@@ -126,7 +126,7 @@ The layout adapts naturally across screen sizes, ensuring a good user experience
 
 ## 🎨 Styling
 
-The UI is styled using **Tyrant CSS**.
+The UI is styled using **Tailwind CSS**.
 
 This approach provides:
 
@@ -230,7 +230,7 @@ This structure ensures:
 - Prisma + PostgreSQL for data persistence
 - Pokémon data ingested via a dedicated script
 - Pagination, search, filters, and sorting handled at the database level
-- Responsive UI with Tyrant CSS
+- Responsive UI with Tailwind CSS
 - Modular, feature-based architecture
 - Simple, reproducible setup using Docker
 
