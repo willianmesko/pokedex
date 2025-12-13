@@ -7,19 +7,19 @@
     "node": ">=22"
   },
   "scripts": {
-    "dev": "next dev",
+    "dev": "NEXT_DISABLE_TURBOPACK=1 next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "db:setup": "prisma generate && prisma migrate dev",
-    "ingest:pokemon": "tsx scripts/ingest-pokemon.ts",
-    "reset:pokedex": "tsx scripts/reset-pokedex.ts",
+
+    "db:start": "docker compose up -d",
+    "db:stop": "docker compose down",
+
     "prisma:generate": "prisma generate",
-    "prisma:migrate": "prisma migrate deploy",
-    "docker:start": "npm run prisma:generate && npm run prisma:migrate && npm run ingest:pokemon && npm run dev",
-    "test": "vitest",
-    "test:ui": "vitest --ui",
-    "test:run": "vitest run"
+    "prisma:migrate": "prisma migrate dev",
+
+    "ingest:pokemon": "tsx scripts/ingest-pokemon.ts",
+
+    "setup": "npm install && npm run prisma:generate && npm run prisma:migrate && npm run ingest:pokemon"
   },
   "dependencies": {
     "@prisma/adapter-pg": "^7.1.0",

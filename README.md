@@ -5,6 +5,7 @@ A **Pokédex application** built with **Next.js**, **Prisma**, and **PostgreSQL*
 ---
 
 ## 🎥 Demo
+
 <img width="1728" height="952" alt="Image" src="https://github.com/user-attachments/assets/97dcc1cc-2d9e-444a-a595-f3943d36c134" />
 
 <img width="1622" height="805" alt="Image" src="https://github.com/user-attachments/assets/324e29a5-cd94-498f-8fc0-ef879b24e6af" />
@@ -12,21 +13,34 @@ A **Pokédex application** built with **Next.js**, **Prisma**, and **PostgreSQL*
 <img width="324" height="700" alt="Image" src="https://github.com/user-attachments/assets/f9f4a257-aabc-402b-960b-e04383c228c1" />
 <img width="325" height="704" alt="Image" src="https://github.com/user-attachments/assets/918c931e-28cb-4f8d-9264-2ce6d1e18104" />
 
-
-
 ---
+
+````markdown
+# Project Name
 
 ## ✅ Requirements
 
+- **Node.js v22 or higher**  
+  Required due to the latest version of **Prisma**, which depends on Node.js 22 features.
 - **Docker** (Docker Desktop includes Docker Compose)
 
-That's it. No Node.js, npm, or PostgreSQL installation needed.
+> [!WARNING]
+> No local PostgreSQL installation is required — the database runs in Docker.
 
 ---
 
 ## 🚀 Quick Start
 
-### 1️⃣ Create the `.env` file
+### 1️⃣ Start PostgreSQL with Docker
+
+```bash
+npm run db:start
+```
+````
+
+This will start a PostgreSQL container exposed on a non-default port (e.g. 5433) to avoid conflicts with local PostgreSQL installations.
+
+### 2️⃣ Create the `.env` file
 
 ```bash
 cp .env.example .env
@@ -35,24 +49,55 @@ cp .env.example .env
 The `.env.example` contains:
 
 ```env
-DATABASE_URL=postgresql://postgres:postgres@db:5432/pokedex
+DB_PORT=5433
+DATABASE_URL=postgresql://postgres:postgres@localhost:5433/pokedex
 ```
 
-⚠️ **Important**: The hostname is `db` (the Docker Compose service name), not `localhost`.
+You can change the port if needed, but it must match the Docker Compose configuration.
 
-### 2️⃣ Start the application
+### 3️⃣ Install dependencies, run migrations, and seed data
 
 ```bash
-docker compose up
+npm run setup
 ```
 
-### 3️⃣ Access the app
+This command will:
+
+- Install dependencies
+- Generate the Prisma Client
+- Run database migrations
+- Ingest Pokémon data into the database
+
+### 4️⃣ Start the application
+
+```bash
+npm run dev
+```
+
+### 5️⃣ Access the app
 
 Open your browser and navigate to:
 
-👉 **http://localhost:3000**
+👉 [http://localhost:3000](http://localhost:3000)
 
 ---
+
+## ℹ️ Notes
+
+- This project enforces Node.js v22+ to ensure Prisma compatibility.
+- If you use `nvm`, simply run:
+
+  ```bash
+  nvm use
+  ```
+
+- Docker is used only for infrastructure (PostgreSQL) to keep the setup simple and reliable.
+
+```
+
+
+
+
 
 ## 🧱 Architecture & Stack
 
@@ -166,38 +211,40 @@ Key principles:
 ## 📦 Project Structure
 
 ```
+
 .
-├── next/                      # Next.js configuration
+├── next/ # Next.js configuration
 ├── app/
-│   ├── api/pokedex/          # API routes
-│   │   └── route.ts          # Pokédex API endpoint
-│   ├── generated/            # Generated types/files
-│   └── pokedex/              # Pokédex page
+│ ├── api/pokedex/ # API routes
+│ │ └── route.ts # Pokédex API endpoint
+│ ├── generated/ # Generated types/files
+│ └── pokedex/ # Pokédex page
 ├── modules/
-│   ├── pokedex/
-│   │   ├── api/              # API layer
-│   │   ├── components/       # React components
-│   │   ├── data/             # Data access layer
-│   │   ├── dto/              # Data Transfer Objects
-│   │   ├── entities/         # Domain entities
-│   │   ├── hooks/            # React hooks
-│   │   ├── server/           # Server-side logic
-│   │   └── validation/       # Validation schemas
-│   │   └── constants.ts      # Module constants
-│   └── shared/
-│       ├── components/       # Shared UI components
-│       ├── errors/           # Error handling
-│       ├── hooks/            # Shared hooks
-│       ├── lib/              # Utility libraries
-│       ├── providers/        # Context providers
-│       └── utils/            # Helper functions
+│ ├── pokedex/
+│ │ ├── api/ # API layer
+│ │ ├── components/ # React components
+│ │ ├── data/ # Data access layer
+│ │ ├── dto/ # Data Transfer Objects
+│ │ ├── entities/ # Domain entities
+│ │ ├── hooks/ # React hooks
+│ │ ├── server/ # Server-side logic
+│ │ └── validation/ # Validation schemas
+│ │ └── constants.ts # Module constants
+│ └── shared/
+│ ├── components/ # Shared UI components
+│ ├── errors/ # Error handling
+│ ├── hooks/ # Shared hooks
+│ ├── lib/ # Utility libraries
+│ ├── providers/ # Context providers
+│ └── utils/ # Helper functions
 ├── docs/
-│   ├── screenshots/          # Application screenshots
-│   └── videos/               # Demo videos
+│ ├── screenshots/ # Application screenshots
+│ └── videos/ # Demo videos
 ├── favicon.ico
-├── globals.css               # Global styles
-├── layout.tsx                # Root layout
-└── page.tsx                  # Home page
+├── globals.css # Global styles
+├── layout.tsx # Root layout
+└── page.tsx # Home page
+
 ```
 
 ---
@@ -274,3 +321,4 @@ This project demonstrates how to build a clean, maintainable, and scalable appli
 ## 📝 License
 
 MIT
+```

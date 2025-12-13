@@ -1,31 +1,15 @@
-version: "3.9"
-
 services:
   db:
     image: postgres:16
     container_name: pokedex-db
-    restart: unless-stopped
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: pokedex
-
+    ports:
+      - "${DB_PORT:-5433}:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-
-  app:
-    build: .
-    container_name: pokedex-app
-    depends_on:
-      - db
-    environment:
-      DATABASE_URL: postgresql://postgres:postgres@db:5432/pokedex
-    ports:
-      - "3000:3000"
-    command: npm run docker:start
-    volumes:
-      - .:/app
-      - /app/node_modules
 
 volumes:
   postgres_data:

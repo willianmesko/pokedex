@@ -1,4 +1,4 @@
-import { Prisma } from "@prisma/client";
+import { Prisma } from "@/app/generated/prisma/client";
 import prisma from "@/shared/lib/db";
 
 export interface FindPaginatedParams {
