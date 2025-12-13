@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { listPokemonQuerySchema } from "@modules/pokedex/validation/list-pokemon.schema";
-import { PokemonService } from "@modules/pokedex/server/services/pokedex.service";
+import { PokemonService } from "@modules/pokedex/server/services/pokemon.service";
 import { DatabaseError } from "@/shared/errors/database-error";
 
 export async function GET(req: NextRequest) {

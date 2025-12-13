@@ -49,7 +49,10 @@ export function AppPagination({
           </PaginationItem>
 
           {pages.map((p, idx) => (
-            <PaginationItem key={p}>
+            <PaginationItem
+              className="cursor-pointer flex items-center justify-center"
+              key={p}
+            >
               {idx > 0 && pages[idx - 1] !== p - 1 && <PaginationEllipsis />}
               <PaginationLink
                 onClick={() => onPageChange(p)}

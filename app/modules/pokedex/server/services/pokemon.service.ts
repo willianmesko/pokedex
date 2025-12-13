@@ -1,6 +1,6 @@
 import type { Pokemon, PokemonStat } from "../../entities/pokemon";
 import { ListPokemonDTO } from "../../dto/list-pokemon.dto";
-import { PokemonRepository } from "../repositories/pokedex.repository";
+import { PokemonRepository } from "../repositories/pokemon.repository";
 import { DatabaseError } from "@/shared/errors/database-error";
 
 export type PokemonRow = {
