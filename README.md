@@ -1,7 +1,6 @@
-````markdown
 # 🧬 Pokédex – Full-Stack Application
 
-A **production-ready Pokédex application** built with **Next.js**, **Prisma**, and **PostgreSQL**. This project demonstrates a complete end-to-end architecture with local data persistence, server-side operations, and a responsive UI—all running with a single Docker command.
+A **Pokédex application** built with **Next.js**, **Prisma**, and **PostgreSQL**. This project demonstrates a complete end-to-end architecture with local data persistence, server-side operations, and a responsive UI—all running with a single Docker command.
 
 ---
 
@@ -20,7 +19,6 @@ That's it. No Node.js, npm, or PostgreSQL installation needed.
 ```bash
 cp .env.example .env
 ```
-````
 
 The `.env.example` contains:
 
@@ -157,16 +155,72 @@ Key principles:
 
 ```
 .
-├── prisma/              # Database schema and migrations
-├── src/
-│   ├── app/            # Next.js app directory (pages, layouts, API routes)
-│   ├── components/     # React components
-│   └── lib/            # Utilities and shared logic
-├── scripts/            # Data ingestion scripts
-├── docker-compose.yml  # Docker services configuration
-├── .env.example        # Environment variables template
-└── README.md
+├── next/                      # Next.js configuration
+├── app/
+│   ├── api/pokedex/          # API routes
+│   │   └── route.ts          # Pokédex API endpoint
+│   ├── generated/            # Generated types/files
+│   └── pokedex/              # Pokédex page
+├── modules/
+│   ├── pokedex/
+│   │   ├── api/              # API layer
+│   │   ├── components/       # React components
+│   │   ├── data/             # Data access layer
+│   │   ├── dto/              # Data Transfer Objects
+│   │   ├── entities/         # Domain entities
+│   │   ├── hooks/            # React hooks
+│   │   ├── server/           # Server-side logic
+│   │   └── validation/       # Validation schemas
+│   │   └── constants.ts      # Module constants
+│   └── shared/
+│       ├── components/       # Shared UI components
+│       ├── errors/           # Error handling
+│       ├── hooks/            # Shared hooks
+│       ├── lib/              # Utility libraries
+│       ├── providers/        # Context providers
+│       └── utils/            # Helper functions
+├── favicon.ico
+├── globals.css               # Global styles
+├── layout.tsx                # Root layout
+└── page.tsx                  # Home page
 ```
+
+---
+
+## 🏗️ Architecture Patterns
+
+### Modular Structure
+
+The project follows a **feature-based modular architecture**:
+
+- **`modules/pokedex/`**: Contains all Pokédex-specific logic
+
+  - Clear separation between layers (API, data, components, validation)
+  - Domain entities and DTOs for type safety
+  - Dedicated hooks for state management
+
+- **`modules/shared/`**: Reusable cross-cutting concerns
+  - Shared components, utilities, and providers
+  - Error handling and common hooks
+  - Infrastructure code used across features
+
+### Layer Separation
+
+Each module follows clean architecture principles:
+
+- **Entities**: Core domain models
+- **Data**: Database access and queries
+- **DTO**: Data transfer and validation
+- **API**: HTTP interface
+- **Components**: UI presentation
+- **Hooks**: State and side effects
+- **Server**: Server-side operations
+
+This structure ensures:
+
+- Easy testing and mocking
+- Clear dependencies
+- Scalable codebase as features grow
 
 ---
 
@@ -177,6 +231,7 @@ Key principles:
 - Pokémon data ingested via a dedicated script
 - Pagination, search, filters, and sorting handled at the database level
 - Responsive UI with Tyrant CSS
+- Modular, feature-based architecture
 - Simple, reproducible setup using Docker
 
 This project demonstrates how to build a clean, maintainable, and scalable application without unnecessary complexity.
@@ -186,7 +241,3 @@ This project demonstrates how to build a clean, maintainable, and scalable appli
 ## 📝 License
 
 MIT
-
-```
-
-```
