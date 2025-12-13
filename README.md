@@ -1,27 +1,25 @@
-Entendi o problema! As imagens não estão sendo exibidas corretamente no preview do GitHub. Vou ajustar a seção de Demo para usar a sintaxe correta do markdown que funciona melhor no GitHub:
-
-````markdown
 # 🧬 Pokédex – Full-Stack Application
 
-A **Pokédex application** built with **Next.js**, **Prisma**, and **PostgreSQL**. This project demonstrates a complete end-to-end architecture with local data persistence, server-side operations, and a responsive UI—all running with a single Docker command.
+A **Pokédex application** built with **Next.js**, **Prisma**, and **PostgreSQL**.  
+This project demonstrates a complete end-to-end architecture with local data persistence, server-side operations, and a responsive UI — all running with a simple setup.
 
 ---
 
 ## 🎥 Demo
 
-**Desktop View**
+### 🖥️ Desktop View
 
 ![Pokédex Desktop View](https://github.com/user-attachments/assets/97dcc1cc-2d9e-444a-a595-f3943d36c134)
 
-**List View**
+### 📋 List View
 
 ![Pokédex List View](https://github.com/user-attachments/assets/324e29a5-cd94-498f-8fc0-ef879b24e6af)
 
-**Detail View**
+### 📄 Detail View
 
 ![Pokédex Detail View](https://github.com/user-attachments/assets/a0b1c075-c3ff-4923-9a6c-94419b73fe13)
 
-**Mobile Views**
+### 📱 Mobile Views
 
 ![Pokédex Mobile View](https://github.com/user-attachments/assets/f9f4a257-aabc-402b-960b-e04383c228c1)
 ![Pokédex Mobile Detail](https://github.com/user-attachments/assets/918c931e-28cb-4f8d-9264-2ce6d1e18104)
@@ -34,7 +32,7 @@ A **Pokédex application** built with **Next.js**, **Prisma**, and **PostgreSQL*
   Required due to the latest version of **Prisma**, which depends on Node.js 22 features.
 - **Docker** (Docker Desktop includes Docker Compose)
 
-> [!WARNING]
+> ⚠️ **Important**  
 > No local PostgreSQL installation is required — the database runs in Docker.
 
 ---
@@ -45,287 +43,234 @@ A **Pokédex application** built with **Next.js**, **Prisma**, and **PostgreSQL*
 
 ```bash
 npm run db:start
-```
-````
 
 This will start a PostgreSQL container exposed on a non-default port (e.g. 5433) to avoid conflicts with local PostgreSQL installations.
 
-### 2️⃣ Create the `.env` file
+⸻
 
-```bash
+2️⃣ Create the .env file
+
 cp .env.example .env
-```
 
-The `.env.example` contains:
+.env.example:
 
-```env
 DB_PORT=5433
 DATABASE_URL=postgresql://postgres:postgres@localhost:5433/pokedex
-```
 
 You can change the port if needed, but it must match the Docker Compose configuration.
 
-### 3️⃣ Install dependencies, run migrations, and seed data
+⸻
 
-```bash
+3️⃣ Install dependencies, run migrations, and seed data
+
 npm run setup
-```
 
 This command will:
+	•	Install dependencies
+	•	Generate the Prisma Client
+	•	Run database migrations
+	•	Ingest Pokémon data into the database
 
-- Install dependencies
-- Generate the Prisma Client
-- Run database migrations
-- Ingest Pokémon data into the database
+⸻
 
-### 4️⃣ Start the application
+4️⃣ Start the application
 
-```bash
 npm run dev
-```
 
-### 5️⃣ Access the app
 
-Open your browser and navigate to:
+⸻
 
-👉 [http://localhost:3000](http://localhost:3000)
+5️⃣ Access the app
 
----
+Open your browser:
 
-## ℹ️ Notes
+👉 http://localhost:3000
 
-- This project enforces Node.js v22+ to ensure Prisma compatibility.
-- If you use `nvm`, simply run:
+⸻
 
-  ```bash
-  nvm use
-  ```
+ℹ️ Notes
+	•	Node.js v22+ is enforced to ensure Prisma compatibility
+	•	If you use nvm:
 
-- Docker is used only for infrastructure (PostgreSQL) to keep the setup simple and reliable.
+nvm use
 
----
+	•	Docker is used only for infrastructure (PostgreSQL) to keep the setup simple and reliable
 
-## 🧱 Architecture & Stack
+⸻
 
-### Next.js (Full Stack)
+🧱 Architecture & Stack
 
-The application uses **Next.js** to handle:
+Next.js (Full Stack)
 
-- **Frontend**: React components with responsive layouts
-- **Backend**: API routes for server-side logic
-- **SSR**: Server-side data fetching and rendering
-- **Routing**: Unified routing and layout composition
+The application uses Next.js for:
+	•	Frontend: React components with responsive layouts
+	•	Backend: API routes for server-side logic
+	•	SSR: Server-side data fetching and rendering
+	•	Routing: Unified routing and layout composition
 
-By using Next.js, the frontend and backend live in the same codebase, which simplifies development, deployment, and type sharing.
+Frontend and backend live in the same codebase, simplifying development and type sharing.
 
-### Prisma & PostgreSQL
+⸻
 
-**Prisma** is used as the ORM and data access layer.
+Prisma & PostgreSQL
 
-- All Pokémon data is stored locally in PostgreSQL
-- Pagination, filtering, sorting, and search are performed directly at the database level
-- Prisma migrations are applied automatically when the app starts via Docker
+Prisma is used as the ORM and data access layer.
+	•	Pokémon data stored locally in PostgreSQL
+	•	Pagination, filtering, sorting, and search executed at the database level
+	•	Prisma migrations applied automatically
 
-This ensures fast queries, predictable behavior, and no dependency on external APIs at runtime.
+This guarantees fast queries and predictable behavior.
 
-### Data Ingestion Script
+⸻
 
-The project includes a dedicated **ingestion script** responsible for populating the database.
+Data Ingestion Script
 
-This script:
+A dedicated ingestion script that:
+	•	Fetches data from the public PokéAPI
+	•	Normalizes the data into the local schema
+	•	Persists Pokémon into PostgreSQL
+	•	Is idempotent (safe to re-run)
 
-- Fetches Pokémon data from the public [PokéAPI](https://pokeapi.co/)
-- Normalizes the data into the local schema
-- Persists all Pokémon into the database
-- Can be safely re-run (idempotent behavior)
+This avoids hitting external APIs during normal usage.
 
-This approach avoids hitting external APIs during normal app usage and provides a stable, production-like setup.
+⸻
 
----
+🧩 Features
 
-## 🧩 Features
+📋 Pokémon List
+	•	Server-side pagination via Prisma
+	•	Optimized database queries
 
-### 📋 Pokémon List
+🔍 Search
+	•	Search Pokémon by name
+	•	Executed directly in PostgreSQL
 
-- Paginated results with server-side pagination via Prisma
-- Optimized database queries
+🧪 Filters
+	•	Filter by Pokémon type
+	•	Works with pagination and sorting
 
-### 🔍 Search
+🔃 Sorting
+	•	Sort by ID or name
+	•	Ascending or descending
 
-- Search Pokémon by name
-- Executed directly in the local database
+📄 Pokémon Details Page
+	•	Stats, types, and metadata
+	•	Loaded entirely from the local database
 
-### 🧪 Filters
+⸻
 
-- Filter Pokémon by type
-- Combined with pagination and sorting
+📱 Responsive Design
 
-### 🔃 Sorting
+Fully responsive across:
+	•	Desktop
+	•	Tablet
+	•	Mobile
 
-- Sort by ID or name
-- Ascending or descending order
+Layouts adapt naturally to different screen sizes.
 
-### 📄 Pokémon Details Page
+⸻
 
-- Detailed view for each Pokémon
-- Stats, types, and metadata
-- Data loaded from the local database
+🎨 Styling
 
-All of these features operate entirely on the **local Prisma database**, not directly on PokéAPI.
+Styled with Tyrant CSS, providing:
+	•	Lightweight styling
+	•	Predictable class-based layouts
+	•	Fast iteration
+	•	Clear separation between structure and style
 
----
+⸻
 
-## 📱 Responsive Design
+🎯 Design Philosophy
 
-The application is fully **responsive** and works well on:
+This project avoids over-engineering.
 
-- Desktop
-- Tablet
-- Mobile devices
+Principles:
+	•	Clear separation of concerns
+	•	Simple, readable architecture
+	•	One-command setup
+	•	Production-like patterns
+	•	Easy to explain in interviews and code reviews
 
-The layout adapts naturally across screen sizes, ensuring a good user experience on all devices.
+⸻
 
----
+📦 Project Structure
 
-## 🎨 Styling
-
-The UI is styled using **Tyrant CSS**.
-
-This approach provides:
-
-- Lightweight styling
-- Predictable class-based layouts
-- Fast iteration without heavy abstractions
-- Clear separation between structure and styling
-
----
-
-## 🎯 Design Philosophy
-
-This project intentionally avoids over-engineering.
-
-Key principles:
-
-- Clear separation of concerns
-- Simple, readable architecture
-- One-command setup via Docker
-- Realistic production patterns
-- Easy to explain in code reviews and interviews
-
----
-
-## 📦 Project Structure
-
-```
 .
-├── next/                    # Next.js configuration
+├── next/
 ├── app/
-│   ├── api/pokedex/        # API routes
-│   │   └── route.ts        # Pokédex API endpoint
-│   ├── generated/          # Generated types/files
-│   └── pokedex/            # Pokédex page
+│   ├── api/pokedex/
+│   │   └── route.ts
+│   ├── generated/
+│   └── pokedex/
 ├── modules/
 │   ├── pokedex/
-│   │   ├── api/            # API layer
-│   │   ├── components/     # React components
-│   │   ├── data/           # Data access layer
-│   │   ├── dto/            # Data Transfer Objects
-│   │   ├── entities/       # Domain entities
-│   │   ├── hooks/          # React hooks
-│   │   ├── server/         # Server-side logic
-│   │   ├── validation/     # Validation schemas
-│   │   └── constants.ts    # Module constants
+│   │   ├── api/
+│   │   ├── components/
+│   │   ├── data/
+│   │   ├── dto/
+│   │   ├── entities/
+│   │   ├── hooks/
+│   │   ├── server/
+│   │   ├── validation/
+│   │   └── constants.ts
 │   └── shared/
-│       ├── components/     # Shared UI components
-│       ├── errors/         # Error handling
-│       ├── hooks/          # Shared hooks
-│       ├── lib/            # Utility libraries
-│       ├── providers/      # Context providers
-│       └── utils/          # Helper functions
+│       ├── components/
+│       ├── errors/
+│       ├── hooks/
+│       ├── lib/
+│       ├── providers/
+│       └── utils/
 ├── docs/
-│   ├── screenshots/        # Application screenshots
-│   └── videos/             # Demo videos
-├── favicon.ico
-├── globals.css             # Global styles
-├── layout.tsx              # Root layout
-└── page.tsx                # Home page
-```
+│   ├── screenshots/
+│   └── videos/
+├── globals.css
+├── layout.tsx
+└── page.tsx
 
----
 
-## 🏗️ Architecture Patterns
+⸻
 
-### Modular Structure
+🏗️ Architecture Patterns
 
-The project follows a **feature-based modular architecture**:
+Modular Structure
+	•	Feature-based modules
+	•	Clean separation of layers
+	•	Domain entities and DTOs
+	•	Dedicated hooks per feature
 
-- **`modules/pokedex/`**: Contains all Pokédex-specific logic
+Layer Separation
+	•	Entities
+	•	Data
+	•	DTO
+	•	API
+	•	Components
+	•	Hooks
+	•	Server
 
-  - Clear separation between layers (API, data, components, validation)
-  - Domain entities and DTOs for type safety
-  - Dedicated hooks for state management
+This ensures scalability, testability, and maintainability.
 
-- **`modules/shared/`**: Reusable cross-cutting concerns
-  - Shared components, utilities, and providers
-  - Error handling and common hooks
-  - Infrastructure code used across features
+⸻
 
-### Layer Separation
+🤖 Development Process
 
-Each module follows clean architecture principles:
+Built with assistance from Claude AI (Anthropic) for:
+	•	Architecture brainstorming
+	•	Code structure and best practices
+	•	Documentation generation
 
-- **Entities**: Core domain models
-- **Data**: Database access and queries
-- **DTO**: Data transfer and validation
-- **API**: HTTP interface
-- **Components**: UI presentation
-- **Hooks**: State and side effects
-- **Server**: Server-side operations
+⸻
 
-This structure ensures:
+🧠 Summary
+	•	Full-stack Next.js application
+	•	Prisma + PostgreSQL
+	•	Local data ingestion
+	•	Database-driven pagination, search, filters, and sorting
+	•	Responsive UI
+	•	Modular architecture
+	•	Simple and reproducible setup
+	•	AI-assisted development workflow
 
-- Easy testing and mocking
-- Clear dependencies
-- Scalable codebase as features grow
+⸻
 
----
-
-## 🤖 Development Process
-
-This project was built with the assistance of **Claude AI** (Anthropic) for:
-
-- **Brainstorming**: Architecture decisions and design patterns
-- **Productivity**: Code structure and best practices
-- **Documentation**: Generating this README and project documentation
-
-Claude AI helped streamline the development process by providing:
-
-- Clean code suggestions
-- Architecture guidance
-- Quick iterations on implementation details
-- Comprehensive documentation
-
----
-
-## 🧠 Summary
-
-- Full-stack Next.js application
-- Prisma + PostgreSQL for data persistence
-- Pokémon data ingested via a dedicated script
-- Pagination, search, filters, and sorting handled at the database level
-- Responsive UI with Tyrant CSS
-- Modular, feature-based architecture
-- Simple, reproducible setup using Docker
-- Built with AI-assisted development workflow
-
-This project demonstrates how to build a clean, maintainable, and scalable application without unnecessary complexity.
-
----
-
-## 📝 License
-
-MIT
-
-```
 
 ```
