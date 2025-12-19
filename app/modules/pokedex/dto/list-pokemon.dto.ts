@@ -7,6 +7,7 @@ export interface ListPokemonDTO {
   order?: "asc" | "desc";
   page?: number;
   limit?: number;
+  types?: string;
 }
 export interface PaginatedResult<T> {
   data: T[];

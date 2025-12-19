@@ -14,6 +14,7 @@ export function usePokemonList(filters: ListPokemonDTO) {
       filters.type ?? "",
       filters.sort ?? "id",
       filters.order ?? "asc",
+      filters.types ?? "",
     ],
 
     queryFn: () => fetchPokemonList(filters),
