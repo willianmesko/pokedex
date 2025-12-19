@@ -1,7 +1,7 @@
-import type { Pokemon, PokemonStat } from "../../entities/pokemon";
-import { ListPokemonDTO } from "../../dto/list-pokemon.dto";
+import { DatabaseError } from "@/app/shared/errors/database-error";
 import { PokemonRepository } from "../repositories/pokemon.repository";
-import { DatabaseError } from "@/shared/errors/database-error";
+import { ListPokemonDTO } from "../../dto/list-pokemon.dto";
+import { Pokemon, PokemonStat } from "../../entities/pokemon";
 
 export type PokemonRow = {
   id: number;
@@ -12,7 +12,6 @@ export type PokemonRow = {
   weight: number | null;
   stats: PokemonStat[] | null;
 };
-
 export class PokemonService {
   constructor(private readonly repository = new PokemonRepository()) {}
 
@@ -29,15 +28,7 @@ export class PokemonService {
     };
   }
 
-  async list(dto: ListPokemonDTO = {}): Promise<{
-    data: Pokemon[];
-    meta: {
-      page: number;
-      limit: number;
-      total: number;
-      totalPages: number;
-    };
-  }> {
+  async list(dto: ListPokemonDTO = {}) {
     const {
       search,
       type,
@@ -73,4 +64,35 @@ export class PokemonService {
       throw new DatabaseError("Failed to list pokémon", err);
     }
   }
+
+  async autocomplete(search: string, limit = 8) {
+    if (!search || search.trim().length < 2) {
+      return [];
+    }
+
+    try {
+      return await this.repository.autocomplete(search, limit);
+    } catch (err) {
+      throw new DatabaseError("Failed to autocomplete pokémon", err);
+    }
+  }
+
+  // private async loadTrie() {
+  //   if (this.trie) return;
+
+  //   const items = await this.repository.findAllNamesSorted();
+  //   this.trie = new PrefixTree();
+
+  //   for (const item of items) {
+  //     this.trie.insert(item.name, item);
+  //   }
+  // }
+
+  // async autocompleteTrie(search: string, limit = 8) {
+  //   if (search.length < 2) return [];
+
+  //   await this.loadTrie();
+
+  //   return this.trie!.search(search, limit);
+  // }
 }

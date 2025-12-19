@@ -1,9 +1,8 @@
-import { SearchInput } from "./SearchInput";
 import { TypeFilter } from "./TypeFilter";
 import { SortOption, SortSelect } from "./SortSelect";
 import { ViewToggle } from "./ViewToggle";
 import { PokemonType } from "../entities/pokemon";
-
+import { PokemonAutocomplete } from "./PokedexAutoComplete";
 export type PokedexToolbarProps = {
   search: string;
   onSearchChange: (value: string) => void;
@@ -32,10 +31,10 @@ export function PokedexToolbar({
     <div className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur">
       <div className="container py-4">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-          <SearchInput
+          <PokemonAutocomplete
             value={search}
             onChange={onSearchChange}
-            className="w-full sm:w-72"
+            onSelect={(name: string) => onSearchChange(name)}
           />
 
           <div className="flex items-center gap-2">

@@ -1,3 +1,4 @@
+"use client";
 import { useState, useMemo } from "react";
 
 export type SortOption = "id-asc" | "id-desc" | "name-asc" | "name-desc";

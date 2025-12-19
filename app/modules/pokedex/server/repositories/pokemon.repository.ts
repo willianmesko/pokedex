@@ -55,4 +55,36 @@ export class PokemonRepository {
 
     return { rows, total };
   }
+  async autocomplete(search: string, limit = 8) {
+    if (!search.trim()) return [];
+
+    return prisma.pokemon.findMany({
+      where: {
+        name: {
+          startsWith: search,
+          mode: Prisma.QueryMode.insensitive,
+        },
+      },
+      orderBy: {
+        name: "asc",
+      },
+      take: limit,
+      select: {
+        id: true,
+        name: true,
+      },
+    });
+  }
+
+  // async findAllNamesSorted(): Promise<{ id: number; name: string }[]> {
+  //   return prisma.pokemon.findMany({
+  //     select: {
+  //       id: true,
+  //       name: true,
+  //     },
+  //     orderBy: {
+  //       name: "asc",
+  //     },
+  //   });
+  // }
 }
