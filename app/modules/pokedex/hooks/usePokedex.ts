@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { PokemonType } from "@modules/pokedex/entities/pokemon";
 
 import { useSearch } from "@/shared/hooks/useSearch";
@@ -24,6 +24,10 @@ export function usePokedex() {
     initialPage: 1,
   });
 
+  useEffect(() => {
+    setPage(1);
+  }, [selectedType, debouncedSearch, setPage]);
+
   usePokedexUrlSync({
     search,
     setSearch,
@@ -42,6 +46,7 @@ export function usePokedex() {
     type: selectedType || undefined,
     sort: apiSort,
     order: apiOrder,
+    types: selectedType || undefined,
   });
 
   return {
